@@ -49,6 +49,17 @@ public class Core extends Subsystem {
     return 0;
   }
 
+  /// Return -1 at far left range
+  //  0 when centered,
+  //  1 at far right
+  public double lineSensor() {
+    return 0;
+  }
+
+  public boolean frontPress() {
+    return false;
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
