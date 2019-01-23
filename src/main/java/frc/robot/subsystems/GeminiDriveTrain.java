@@ -7,46 +7,51 @@
 
 package frc.robot.subsystems;
 
-import java.util.function.Consumer;
-
 import com.ctre.phoenix.motorcontrol.can.*;
 import frc.lightning.subsystems.CANDrivetrain;
 import frc.lightning.util.MotorConfig;
 import frc.robot.commands.TankDrive;
 
+import java.util.function.Consumer;
+
 /**
- * Add your docs here.
+ * Gemini is a 4 CIM, single speed drivetrain. One
+ * of the simplest we have fielded in years. That
+ * said we need a really solid model of its characteristics
+ * so we can run profiles and optimize our usage of it.
  */
-public class GlitchDrivetrain extends CANDrivetrain {
-  public static GlitchDrivetrain create() {
-    return new GlitchDrivetrain(
+public class GeminiDriveTrain extends CANDrivetrain {
+    MotorConfig driveMotorConfig = MotorConfig.get("drive.json");
+
+  public static GeminiDriveTrain create() {
+    return new GeminiDriveTrain(
       new WPI_TalonSRX(1),
       new WPI_VictorSPX(2),
-      new WPI_VictorSPX(3),
       new WPI_TalonSRX(4),
-      new WPI_VictorSPX(5),
       new WPI_VictorSPX(6));
   }
 
-  public GlitchDrivetrain(WPI_TalonSRX left, WPI_VictorSPX left2, WPI_VictorSPX left3, WPI_TalonSRX right, WPI_VictorSPX right2, WPI_VictorSPX right3) {
+  public GeminiDriveTrain(WPI_TalonSRX left, WPI_VictorSPX left2,
+                          WPI_TalonSRX right, WPI_VictorSPX right2) {
     super(left, right);
-    getLeftMaster().setInverted(true);
     addLeftFollower(left2);
-    addLeftFollower(left3);
-
-    addRightFollower(right2, true);
-    addRightFollower(right3, true);
+    addRightFollower(right2);
 
     configureMotors();
-
-    MotorConfig drive = MotorConfig.get("drive.json");
-    withEachMotor((m) -> drive.registerMotor(m));
+    withEachMotor(driveMotorConfig::registerMotor);
   }
 
   public void configureMotors() {
-    super.configureMotors();
-    getLeftMaster().setInverted(true);
-    enableLogging();
+      getLeftMaster().setInverted(true);
+      super.configureMotors();
+
+      withEachMaster((m) -> {
+//          m.configOpenloopRamp(0.2);
+//          m.configClosedloopRamp(0.2);
+      });
+
+      withEachMotor(driveMotorConfig::resetMotor);
+      enableLogging();
   }
 
   @Override

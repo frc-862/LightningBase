@@ -19,18 +19,20 @@ import frc.lightning.util.FaultCode.Codes;
 import frc.robot.RobotMap;
 
 /**
- * Add your docs here.
+ * This is a subsystem that has robot sensor that
+ * are general parts of the robot -- there are
+ * no active mechanisms in Core, and it is not
+ * expected that a command would ever require
+ * Core, it is just queried.
  */
 public class Core extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commajnds.
-  // private AHRS navx;
+  private AHRS navx;
   private Compressor compressor = new Compressor(RobotMap.compressorCANId);
-  // private PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.pdpCANId);
+  private PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.pdpCANId);
 
   public Core() {
-    // navx = new AHRS(SPI.Port.kMXP);
-    // DataLogger.addDataElement("heading", () -> getHeading());
+     navx = new AHRS(SPI.Port.kMXP);
+     DataLogger.addDataElement("heading", () -> getHeading());
 
     // monitor if the heading is exactly the same, there is always 
     // some jitter in the reading, so this will not be the case
@@ -40,13 +42,12 @@ public class Core extends Subsystem {
     //     2.0, 0, "NavX unresponsive"));
 
     // addChild("PDP", pdp);
-    // addChild("NavX", navx);
+     addChild("NavX", navx);
     addChild("Compressor", compressor);
   }
 
   public double getHeading() {
-    // return navx.getFusedHeading();
-    return 0;
+     return navx.getFusedHeading();
   }
 
   /// Return -1 at far left range

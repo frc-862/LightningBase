@@ -68,6 +68,15 @@ public class MotorConfig {
         }
     }
 
+    public void resetMotor(BaseMotorController motor) {
+        if (motors.contains(motor)) {
+            for (String param : settings.keySet()) {
+                System.out.println("Set " + param + " with " + settings.get(param));
+                set(motor, param, settings.get(param));
+            }
+        }
+    }
+
     public void updateParameter(String param, double value) {
         settings.put(param, value);
         for (var motor : motors) {

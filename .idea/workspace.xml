@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c828d2-288d-4f2c-8c10-caccf6f8fb36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/FollowLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/deploy/css/img/gradient_light.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/deploy/css/img/gradient_light.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/deploy/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/deploy/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GeminiDriveTrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/lightning/subsystems/CANDrivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/lightning/subsystems/CANDrivetrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/lightning/util/MotorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/lightning/util/MotorConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GlitchDrivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GlitchDrivetrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/OBotDrivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/OBotDrivetrain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -59,13 +61,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1595" />
+          <entry key="JAVA" value="5220" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="3" />
+          <entry key="JAVA" value="11" />
         </counts>
       </usages-collector>
     </session>
@@ -84,7 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/FollowLine.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="384">
@@ -103,11 +105,82 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GeminiDriveTrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/OBotDrivetrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="960">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GlitchDrivetrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="634">
+              <caret line="53" column="2" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/lightning/util/MotorConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/lightning/subsystems/CANDrivetrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1499">
+              <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+              <folding>
+                <element signature="e#1925#1926#0" expanded="true" />
+                <element signature="e#1940#1941#0" expanded="true" />
+                <element signature="e#2228#2229#0" expanded="true" />
+                <element signature="e#2264#2265#0" expanded="true" />
+                <element signature="e#4233#4234#0" expanded="true" />
+                <element signature="e#4266#4267#0" expanded="true" />
+                <element signature="e#4313#4314#0" expanded="true" />
+                <element signature="e#4347#4348#0" expanded="true" />
+                <element signature="e#4763#4764#0" expanded="true" />
+                <element signature="e#4836#4837#0" expanded="true" />
+                <element signature="e#4877#4878#0" expanded="true" />
+                <element signature="e#4950#4951#0" expanded="true" />
+                <element signature="e#5003#5004#0" expanded="true" />
+                <element signature="e#5064#5065#0" expanded="true" />
+                <element signature="e#5118#5119#0" expanded="true" />
+                <element signature="e#5180#5181#0" expanded="true" />
+                <element signature="e#5233#5234#0" expanded="true" />
+                <element signature="e#5294#5295#0" expanded="true" />
+                <element signature="e#5348#5349#0" expanded="true" />
+                <element signature="e#5410#5411#0" expanded="true" />
+                <element signature="e#5459#5460#0" expanded="true" />
+                <element signature="e#5528#5529#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Core.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="778">
-              <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+            <state relative-caret-position="696">
+              <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
               <folding>
+                <element signature="e#1987#1988#0" expanded="true" />
+                <element signature="e#2027#2028#0" expanded="true" />
                 <element signature="e#2055#2056#0" expanded="true" />
                 <element signature="e#2070#2071#0" expanded="true" />
                 <element signature="e#2106#2107#0" expanded="true" />
@@ -611,8 +684,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Core.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/commands/FollowLine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/lightning/util/MotorConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/lightning/subsystems/CANDrivetrain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/OBotDrivetrain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GlitchDrivetrain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GeminiDriveTrain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Core.java" />
       </list>
     </option>
   </component>
@@ -706,13 +784,18 @@
     <property name="SearchEverywhereHistoryKey" value="robojava&#9;FILE&#9;file:///Users/phurley/code/projects/LightningBase/src/main/java/frc/robot/Robot.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548272511593" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548276245408" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="frc.robot.subsystems" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -797,12 +880,12 @@
       <option name="presentableId" value="Default" />
       <updated>1548098042477</updated>
       <workItem from="1548098043950" duration="96000" />
-      <workItem from="1548098297709" duration="4151000" />
+      <workItem from="1548098297709" duration="7690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4247000" />
+    <option name="totallyTimeSpent" value="7786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -857,19 +940,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Core.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
-          <folding>
-            <element signature="e#2055#2056#0" expanded="true" />
-            <element signature="e#2070#2071#0" expanded="true" />
-            <element signature="e#2106#2107#0" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/FollowLine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -882,6 +952,101 @@
             <element signature="e#1763#1764#0" expanded="true" />
             <element signature="e#2069#2070#0" expanded="true" />
             <element signature="e#2100#2101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2019.1.1/db163458e3b3460c8b0aa2949e66f6fe87a66d4c/wpilibj-java-2019.1.1-sources.jar!/edu/wpi/first/wpilibj/SpeedController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ctre.phoenix/api-java/5.12.0/aca8d84775394631caa2992da07e3b11f14bc513/api-java-5.12.0-sources.jar!/com/ctre/phoenix/motorcontrol/can/TalonSRX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ctre.phoenix/wpiapi-java/5.12.0/7ba7915eee25afd745d0c76be698132d71c8f519/wpiapi-java-5.12.0-sources.jar!/com/ctre/phoenix/motorcontrol/can/WPI_TalonSRX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/lightning/util/MotorConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/lightning/subsystems/CANDrivetrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1499">
+          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding>
+            <element signature="e#1925#1926#0" expanded="true" />
+            <element signature="e#1940#1941#0" expanded="true" />
+            <element signature="e#2228#2229#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#4233#4234#0" expanded="true" />
+            <element signature="e#4266#4267#0" expanded="true" />
+            <element signature="e#4313#4314#0" expanded="true" />
+            <element signature="e#4347#4348#0" expanded="true" />
+            <element signature="e#4763#4764#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#4877#4878#0" expanded="true" />
+            <element signature="e#4950#4951#0" expanded="true" />
+            <element signature="e#5003#5004#0" expanded="true" />
+            <element signature="e#5064#5065#0" expanded="true" />
+            <element signature="e#5118#5119#0" expanded="true" />
+            <element signature="e#5180#5181#0" expanded="true" />
+            <element signature="e#5233#5234#0" expanded="true" />
+            <element signature="e#5294#5295#0" expanded="true" />
+            <element signature="e#5348#5349#0" expanded="true" />
+            <element signature="e#5410#5411#0" expanded="true" />
+            <element signature="e#5459#5460#0" expanded="true" />
+            <element signature="e#5528#5529#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/OBotDrivetrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GlitchDrivetrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="53" column="2" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/GeminiDriveTrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/Core.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding>
+            <element signature="e#1987#1988#0" expanded="true" />
+            <element signature="e#2027#2028#0" expanded="true" />
+            <element signature="e#2055#2056#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2106#2107#0" expanded="true" />
+            <element signature="e#2123#2124#0" expanded="true" />
           </folding>
         </state>
       </provider>
