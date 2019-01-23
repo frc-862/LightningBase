@@ -19,38 +19,38 @@ import frc.robot.commands.TankDrive;
  * Add your docs here.
  */
 public class OBotDrivetrain extends CANDrivetrain {
-  public static OBotDrivetrain create() {
-    return new OBotDrivetrain(
-      new WPI_TalonSRX(1),
-      new WPI_TalonSRX(2),
-      new WPI_TalonSRX(3),
-      new WPI_TalonSRX(4),
-      new WPI_TalonSRX(5),
-      new WPI_TalonSRX(6)
-    );    
-  }
+    public static OBotDrivetrain create() {
+        return new OBotDrivetrain(
+                   new WPI_TalonSRX(1),
+                   new WPI_TalonSRX(2),
+                   new WPI_TalonSRX(3),
+                   new WPI_TalonSRX(4),
+                   new WPI_TalonSRX(5),
+                   new WPI_TalonSRX(6)
+               );
+    }
 
-  public OBotDrivetrain(WPI_TalonSRX left, WPI_TalonSRX left2, WPI_TalonSRX left3, WPI_TalonSRX right, WPI_TalonSRX right2, WPI_TalonSRX right3) {
-    super(left, right);
-    getLeftMaster().setInverted(true);
-    addLeftFollower(left2);
-    addLeftFollower(left3);
+    public OBotDrivetrain(WPI_TalonSRX left, WPI_TalonSRX left2, WPI_TalonSRX left3, WPI_TalonSRX right, WPI_TalonSRX right2, WPI_TalonSRX right3) {
+        super(left, right);
+        getLeftMaster().setInverted(true);
+        addLeftFollower(left2);
+        addLeftFollower(left3);
 
-    addRightFollower(right2, true);
-    addRightFollower(right3, true);
+        addRightFollower(right2, true);
+        addRightFollower(right3, true);
 
-    MotorConfig drive = MotorConfig.get("drive.json");
-    withEachMotor((m) -> drive.registerMotor(m));
-  }
+        MotorConfig drive = MotorConfig.get("drive.json");
+        withEachMotor((m) -> drive.registerMotor(m));
+    }
 
-  public void configureMotors() {
-    super.configureMotors();
-    enableLogging();
-  }
+    public void configureMotors() {
+        super.configureMotors();
+        enableLogging();
+    }
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    setDefaultCommand(new TankDrive());
-  }
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        setDefaultCommand(new TankDrive());
+    }
 }

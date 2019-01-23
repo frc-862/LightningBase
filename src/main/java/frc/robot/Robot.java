@@ -24,17 +24,17 @@ import frc.robot.subsystems.SiriusDrivetrain;
  * project.
  */
 public class Robot extends LightningRobot {
-  public static Core core = new Core();
-  public static LightningDrivetrain drivetrain = SiriusDrivetrain.create();
-  public static Shooter shooter = new Shooter();
-  public static OI oi = new OI();
+    public static Core core = new Core();
+    public static LightningDrivetrain drivetrain = SiriusDrivetrain.create();
+    public static Shooter shooter = new Shooter();
+    public static OI oi = new OI();
 
-  public Robot() {
-    // this.registerAutonomousCommmand(name, command);
-    super();
-    System.out.println("Initializing our robot");
+    public Robot() {
+        // this.registerAutonomousCommmand(name, command);
+        super();
+        System.out.println("Initializing our robot");
 
-    // Shuffleboard
-    FaultMonitor.register(new FaultMonitor(Codes.INTERNAL_ERROR, () -> RobotController.getUserButton()));
-  }
+        // Shuffleboard
+        FaultMonitor.register(new FaultMonitor(Codes.INTERNAL_ERROR, () -> RobotController.getUserButton()));
+    }
 }

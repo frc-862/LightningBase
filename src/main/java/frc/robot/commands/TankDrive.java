@@ -11,21 +11,21 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class TankDrive extends Command {
-  public TankDrive() {
-    // Use requires() here to declare subsystem dependencies
-    requires(Robot.drivetrain);
-  }
+    public TankDrive() {
+        // Use requires() here to declare subsystem dependencies
+        requires(Robot.drivetrain);
+    }
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
-    double left = Robot.oi.getLeftPower();
-    double right = Robot.oi.getRightPower();
-    Robot.drivetrain.setPower(left, right);
-  }
+    // Called repeatedly when this Command is scheduled to run
+    @Override
+    protected void execute() {
+        double left = Robot.oi.getLeftPower();
+        double right = Robot.oi.getRightPower();
+        Robot.drivetrain.setPower(left, right);
+    }
 
-  @Override
-  protected boolean isFinished() {
-    return false;
-  }
+    @Override
+    protected boolean isFinished() {
+        return false;
+    }
 }

@@ -23,13 +23,13 @@ public class LightningMath {
         return ticks / TICS_PER_ROTATION * wheelCircumference;
     }
 
-	public static double meters2feet(double meters) {
-		return meters * 0.3048;
-	}
+    public static double meters2feet(double meters) {
+        return meters * 0.3048;
+    }
 
-	public static double feet2meters(double feet) {
-		return feet * 3.28084;
-	}
+    public static double feet2meters(double feet) {
+        return feet * 3.28084;
+    }
 
     public static double limit(double v, double low, double high) {
         return (v < low) ? low : ((v > high) ? high : v);
@@ -68,7 +68,7 @@ public class LightningMath {
     }
 
     public static int scale(int input,
-            int lowInput, int highInput, int lowOutput, int highOutput)
+                            int lowInput, int highInput, int lowOutput, int highOutput)
     {
         final int inputRange = highInput - lowInput;
         final int outputRange = highOutput - lowOutput;

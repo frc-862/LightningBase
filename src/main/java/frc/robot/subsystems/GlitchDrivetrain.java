@@ -18,40 +18,40 @@ import frc.robot.commands.TankDrive;
  * Add your docs here.
  */
 public class GlitchDrivetrain extends CANDrivetrain {
-  public static GlitchDrivetrain create() {
-    return new GlitchDrivetrain(
-      new WPI_TalonSRX(1),
-      new WPI_VictorSPX(2),
-      new WPI_VictorSPX(3),
-      new WPI_TalonSRX(4),
-      new WPI_VictorSPX(5),
-      new WPI_VictorSPX(6));
-  }
+    public static GlitchDrivetrain create() {
+        return new GlitchDrivetrain(
+                   new WPI_TalonSRX(1),
+                   new WPI_VictorSPX(2),
+                   new WPI_VictorSPX(3),
+                   new WPI_TalonSRX(4),
+                   new WPI_VictorSPX(5),
+                   new WPI_VictorSPX(6));
+    }
 
-  public GlitchDrivetrain(WPI_TalonSRX left, WPI_VictorSPX left2, WPI_VictorSPX left3, WPI_TalonSRX right, WPI_VictorSPX right2, WPI_VictorSPX right3) {
-    super(left, right);
-    getLeftMaster().setInverted(true);
-    addLeftFollower(left2);
-    addLeftFollower(left3);
+    public GlitchDrivetrain(WPI_TalonSRX left, WPI_VictorSPX left2, WPI_VictorSPX left3, WPI_TalonSRX right, WPI_VictorSPX right2, WPI_VictorSPX right3) {
+        super(left, right);
+        getLeftMaster().setInverted(true);
+        addLeftFollower(left2);
+        addLeftFollower(left3);
 
-    addRightFollower(right2, true);
-    addRightFollower(right3, true);
+        addRightFollower(right2, true);
+        addRightFollower(right3, true);
 
-    configureMotors();
+        configureMotors();
 
-    MotorConfig drive = MotorConfig.get("drive.json");
-    withEachMotor((m) -> drive.registerMotor(m));
-  }
+        MotorConfig drive = MotorConfig.get("drive.json");
+        withEachMotor((m) -> drive.registerMotor(m));
+    }
 
-  public void configureMotors() {
-    super.configureMotors();
-    getLeftMaster().setInverted(true);
-    enableLogging();
-  }
+    public void configureMotors() {
+        super.configureMotors();
+        getLeftMaster().setInverted(true);
+        enableLogging();
+    }
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    setDefaultCommand(new TankDrive());
-  }
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        setDefaultCommand(new TankDrive());
+    }
 }

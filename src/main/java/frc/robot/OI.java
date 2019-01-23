@@ -17,18 +17,18 @@ import frc.robot.commands.Shoot;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  private Joystick driver = new Joystick(0);
-  private Button shootButton = new JoystickButton(driver, RobotMap.shootButton);
+    private Joystick driver = new Joystick(0);
+    private Button shootButton = new JoystickButton(driver, RobotMap.shootButton);
 
-  public double getLeftPower() { 
-    return -driver.getRawAxis(Constants.leftThrottleAxis);
-  }
+    public double getLeftPower() {
+        return -driver.getRawAxis(Constants.leftThrottleAxis);
+    }
 
-  public double getRightPower() {
-    return -driver.getRawAxis(Constants.rightThrottleAxis);
-  }
-  
-  public OI() {
-    shootButton.whenPressed(new Shoot());
-  }
+    public double getRightPower() {
+        return -driver.getRawAxis(Constants.rightThrottleAxis);
+    }
+
+    public OI() {
+        shootButton.whenPressed(new Shoot());
+    }
 }

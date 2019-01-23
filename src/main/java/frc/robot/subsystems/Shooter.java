@@ -22,54 +22,54 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-  private DoubleSolenoid kicker = new DoubleSolenoid(RobotMap.compressorCANId, 
-      RobotMap.kickerCANId1, RobotMap.kickerCANId2);
+    private DoubleSolenoid kicker = new DoubleSolenoid(RobotMap.compressorCANId,
+            RobotMap.kickerCANId1, RobotMap.kickerCANId2);
 
-  private WPI_TalonSRX leftFlywheel = new WPI_TalonSRX(RobotMap.leftFlywheelCANId);
-  private WPI_TalonSRX rightFlywheel = new WPI_TalonSRX(RobotMap.rightFlywheelCANId);
+    private WPI_TalonSRX leftFlywheel = new WPI_TalonSRX(RobotMap.leftFlywheelCANId);
+    private WPI_TalonSRX rightFlywheel = new WPI_TalonSRX(RobotMap.rightFlywheelCANId);
 
-  private MotorConfig flywheelConfig = MotorConfig.get("flywheels.json");
+    private MotorConfig flywheelConfig = MotorConfig.get("flywheels.json");
 
-  public Shooter() {
-    leftFlywheel.setInverted(true);
-    withFlywheels((m) -> flywheelConfig.registerMotor(m));
+    public Shooter() {
+        leftFlywheel.setInverted(true);
+        withFlywheels((m) -> flywheelConfig.registerMotor(m));
 
-    DataLogger.addDelayedDataElement("leftFlywheelCommand", () -> leftFlywheel.getMotorOutputPercent());
-    DataLogger.addDelayedDataElement("rightFlywheelCommand", () -> rightFlywheel.getMotorOutputPercent());
+        DataLogger.addDelayedDataElement("leftFlywheelCommand", () -> leftFlywheel.getMotorOutputPercent());
+        DataLogger.addDelayedDataElement("rightFlywheelCommand", () -> rightFlywheel.getMotorOutputPercent());
 
-    DataLogger.addDelayedDataElement("leftFlywheelCurrent", () -> leftFlywheel.getOutputCurrent());
-    DataLogger.addDelayedDataElement("rightFlywheelCurrent", () -> rightFlywheel.getOutputCurrent());
+        DataLogger.addDelayedDataElement("leftFlywheelCurrent", () -> leftFlywheel.getOutputCurrent());
+        DataLogger.addDelayedDataElement("rightFlywheelCurrent", () -> rightFlywheel.getOutputCurrent());
 
-    DataLogger.addDelayedDataElement("leftFlywheelSpeed", () -> leftFlywheel.getSelectedSensorVelocity());
-    DataLogger.addDelayedDataElement("rightFlywheelSpeed", () -> rightFlywheel.getSelectedSensorVelocity());
+        DataLogger.addDelayedDataElement("leftFlywheelSpeed", () -> leftFlywheel.getSelectedSensorVelocity());
+        DataLogger.addDelayedDataElement("rightFlywheelSpeed", () -> rightFlywheel.getSelectedSensorVelocity());
 
-    addChild("Left Flywheel", leftFlywheel);
-    addChild("Right Flywheel", rightFlywheel);
-    addChild("Kicker", kicker);
-  }
+        addChild("Left Flywheel", leftFlywheel);
+        addChild("Right Flywheel", rightFlywheel);
+        addChild("Kicker", kicker);
+    }
 
-  protected void withFlywheels(Consumer<WPI_TalonSRX> fn) {
-    fn.accept(leftFlywheel);
-    fn.accept(rightFlywheel);
-  }
+    protected void withFlywheels(Consumer<WPI_TalonSRX> fn) {
+        fn.accept(leftFlywheel);
+        fn.accept(rightFlywheel);
+    }
 
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  public void setFlywheelPower(double pwr) {
-    withFlywheels((fw) -> fw.set(ControlMode.PercentOutput, pwr));
-  }
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+    public void setFlywheelPower(double pwr) {
+        withFlywheels((fw) -> fw.set(ControlMode.PercentOutput, pwr));
+    }
 
-  public void kick() {
-    kicker.set(Value.kForward);
-  }
+    public void kick() {
+        kicker.set(Value.kForward);
+    }
 
-  public void retract() {
-    kicker.set(Value.kReverse);
-  }
-  
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+    public void retract() {
+        kicker.set(Value.kReverse);
+    }
+
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        // setDefaultCommand(new MySpecialCommand());
+    }
 }

@@ -11,21 +11,21 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
 public class SpinUpFlywheels extends TimedCommand {
-  private final double power;
+    private final double power;
 
-  public SpinUpFlywheels(double pwr, double duration) {
-    super(duration, Robot.shooter);
-    power = pwr;
-  }
+    public SpinUpFlywheels(double pwr, double duration) {
+        super(duration, Robot.shooter);
+        power = pwr;
+    }
 
-  public SpinUpFlywheels() {
-    this(1, 2.5);
-  }
+    public SpinUpFlywheels() {
+        this(1, 2.5);
+    }
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-    Robot.shooter.setFlywheelPower(1);
-  }
+    // Called just before this Command runs the first time
+    @Override
+    protected void initialize() {
+        Robot.shooter.setFlywheelPower(1);
+    }
 
 }

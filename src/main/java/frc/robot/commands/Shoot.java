@@ -10,13 +10,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Shoot extends CommandGroup {
-  /**
-   * Add your docs here.
-   */
-  public Shoot() {
-    addSequential(new SpinUpFlywheels());
-    addSequential(new Kick());
-    addSequential(new Retract());
-    addSequential(new StopFlywheels());
-  }
+    /**
+     * Add your docs here.
+     */
+    public Shoot() {
+        addSequential(new SpinUpFlywheels());
+        addSequential(new Kick());
+        addSequential(new Retract());
+        addSequential(new StopFlywheels());
+    }
 }

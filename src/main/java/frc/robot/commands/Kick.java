@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
 public class Kick extends TimedCommand {
-  public Kick() {
-    super(1.0, Robot.shooter);
-  }
+    public Kick() {
+        super(1.0, Robot.shooter);
+    }
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-    Robot.shooter.kick();
-  }
+    // Called just before this Command runs the first time
+    @Override
+    protected void initialize() {
+        Robot.shooter.kick();
+    }
 }

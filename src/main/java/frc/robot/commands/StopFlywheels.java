@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
 public class StopFlywheels extends InstantCommand {
-  public StopFlywheels() {
-    requires(Robot.shooter);
-  }
+    public StopFlywheels() {
+        requires(Robot.shooter);
+    }
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-    Robot.shooter.setFlywheelPower(0);
-  }
+    // Called just before this Command runs the first time
+    @Override
+    protected void initialize() {
+        Robot.shooter.setFlywheelPower(0);
+    }
 
 }

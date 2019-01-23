@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
 public class Retract extends TimedCommand {
-  public Retract() {
-    super(0.5, Robot.shooter);
-  }
+    public Retract() {
+        super(0.5, Robot.shooter);
+    }
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-    Robot.shooter.retract();
-  }
+    // Called just before this Command runs the first time
+    @Override
+    protected void initialize() {
+        Robot.shooter.retract();
+    }
 }

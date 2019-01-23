@@ -26,44 +26,44 @@ import frc.robot.RobotMap;
  * Core, it is just queried.
  */
 public class Core extends Subsystem {
-  private AHRS navx;
-  private Compressor compressor = new Compressor(RobotMap.compressorCANId);
-  private PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.pdpCANId);
+    private AHRS navx;
+    private Compressor compressor = new Compressor(RobotMap.compressorCANId);
+    private PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.pdpCANId);
 
-  public Core() {
-     navx = new AHRS(SPI.Port.kMXP);
-     DataLogger.addDataElement("heading", () -> getHeading());
+    public Core() {
+        navx = new AHRS(SPI.Port.kMXP);
+        DataLogger.addDataElement("heading", () -> getHeading());
 
-    // monitor if the heading is exactly the same, there is always 
-    // some jitter in the reading, so this will not be the case
-    // if we are getting valid values from the sensor for >= 3 seconds
-    
-    // FaultMonitor.register(new UnchangingFaultMonitor(Codes.NAVX_ERROR, () -> navx.getUpdateCount(), 
-    //     2.0, 0, "NavX unresponsive"));
+        // monitor if the heading is exactly the same, there is always
+        // some jitter in the reading, so this will not be the case
+        // if we are getting valid values from the sensor for >= 3 seconds
 
-    // addChild("PDP", pdp);
-     addChild("NavX", navx);
-    addChild("Compressor", compressor);
-  }
+        // FaultMonitor.register(new UnchangingFaultMonitor(Codes.NAVX_ERROR, () -> navx.getUpdateCount(),
+        //     2.0, 0, "NavX unresponsive"));
 
-  public double getHeading() {
-     return navx.getFusedHeading();
-  }
+        // addChild("PDP", pdp);
+        addChild("NavX", navx);
+        addChild("Compressor", compressor);
+    }
 
-  /// Return -1 at far left range
-  //  0 when centered,
-  //  1 at far right
-  public double lineSensor() {
-    return 0;
-  }
+    public double getHeading() {
+        return navx.getFusedHeading();
+    }
 
-  public boolean frontPress() {
-    return false;
-  }
+    /// Return -1 at far left range
+    //  0 when centered,
+    //  1 at far right
+    public double lineSensor() {
+        return 0;
+    }
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+    public boolean frontPress() {
+        return false;
+    }
+
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        // setDefaultCommand(new MySpecialCommand());
+    }
 }

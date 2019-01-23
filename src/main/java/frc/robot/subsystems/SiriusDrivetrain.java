@@ -20,40 +20,40 @@ import frc.robot.commands.TankDrive;
  * Add your docs here.
  */
 public class SiriusDrivetrain extends SpeedControllerDrivetrain {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 
-  public static SiriusDrivetrain create() {
-    SpeedControllerGroup left = new SpeedControllerGroup(
-      new Victor(RobotMap.leftMotor1), new Victor(RobotMap.leftMotor2));
+    public static SiriusDrivetrain create() {
+        SpeedControllerGroup left = new SpeedControllerGroup(
+            new Victor(RobotMap.leftMotor1), new Victor(RobotMap.leftMotor2));
 
-    SpeedControllerGroup right = new SpeedControllerGroup(
-        new Victor(RobotMap.rightMotor1), new Victor(RobotMap.rightMotor2));
+        SpeedControllerGroup right = new SpeedControllerGroup(
+            new Victor(RobotMap.rightMotor1), new Victor(RobotMap.rightMotor2));
 
-    right.setInverted(true);
+        right.setInverted(true);
 
-    Encoder leftEncoder = new Encoder(RobotMap.leftEncoder1, RobotMap.leftEncoder2);
-    Encoder rightEncoder = new Encoder(RobotMap.rightEncoder1, RobotMap.rightEncoder2);
+        Encoder leftEncoder = new Encoder(RobotMap.leftEncoder1, RobotMap.leftEncoder2);
+        Encoder rightEncoder = new Encoder(RobotMap.rightEncoder1, RobotMap.rightEncoder2);
 
-    return new SiriusDrivetrain(left, leftEncoder, right, rightEncoder);
-  }
+        return new SiriusDrivetrain(left, leftEncoder, right, rightEncoder);
+    }
 
-  public SiriusDrivetrain(SpeedController left, Encoder leftEnc, SpeedController right, Encoder rightEnc) {
-    super(left, leftEnc, right, rightEnc);
+    public SiriusDrivetrain(SpeedController left, Encoder leftEnc, SpeedController right, Encoder rightEnc) {
+        super(left, leftEnc, right, rightEnc);
 
-    DataLogger.addDataElement("leftPower", () -> left.get());
-    DataLogger.addDataElement("rightPower", () -> right.get());
+        DataLogger.addDataElement("leftPower", () -> left.get());
+        DataLogger.addDataElement("rightPower", () -> right.get());
 
-    DataLogger.addDataElement("leftPosition", () -> leftEncoder.getDistance());
-    DataLogger.addDataElement("rightPosition", () -> rightEncoder.getDistance());
+        DataLogger.addDataElement("leftPosition", () -> leftEncoder.getDistance());
+        DataLogger.addDataElement("rightPosition", () -> rightEncoder.getDistance());
 
-    DataLogger.addDataElement("leftVelocity", () -> leftEncoder.getRate());
-    DataLogger.addDataElement("rightVelocity", () -> rightEncoder.getRate());
-  }
+        DataLogger.addDataElement("leftVelocity", () -> leftEncoder.getRate());
+        DataLogger.addDataElement("rightVelocity", () -> rightEncoder.getRate());
+    }
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    setDefaultCommand(new TankDrive());
-  }
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        setDefaultCommand(new TankDrive());
+    }
 }
