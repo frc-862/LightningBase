@@ -1,12 +1,23 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.lightning.logging.CommandLogger;
 import frc.robot.Robot;
 
 
 public class FollowLine extends Command {
+    CommandLogger logger = new CommandLogger(getClass().getCanonicalName());
+
     public FollowLine() {
         requires(Robot.drivetrain);
+        logger.addDataElement("error");
+        logger.addDataElement("turn");
+        logger.addDataElement("velocity");
+    }
+
+    @Override
+    public void initialize() {
+        logger.reset();
     }
 
     /**
@@ -28,6 +39,11 @@ public class FollowLine extends Command {
         final double turn = error * turnP;
         final double velocity = (error < 0.5) ? straightVelocity : turningVelocity;
 
+        logger.set("error", error);
+        logger.set("turn", turn);
+        logger.set("velocity", velocity);
+        logger.writeValues();
+
         // drive
         Robot.drivetrain.setVelocity(velocity - turn, velocity + turn);
     }
@@ -47,5 +63,6 @@ public class FollowLine extends Command {
     @Override
     protected void end() {
         Robot.drivetrain.stop();
+        logger.drain();
     }
 }

@@ -1,4 +1,4 @@
-package frc.lightning.util;
+package frc.lightning.commands;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

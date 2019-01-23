@@ -9,7 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotController;
 import frc.lightning.LightningRobot;
-import frc.lightning.subsystems.LightningDrivetrain;
+import frc.lightning.subsystems.CANDrivetrain;
 import frc.lightning.util.FaultMonitor;
 import frc.lightning.util.FaultCode.Codes;
 import frc.robot.subsystems.Core;
@@ -24,7 +24,7 @@ import frc.robot.subsystems.GeminiDriveTrain;
  */
 public class Robot extends LightningRobot {
     public static Core core = new Core();
-    public static LightningDrivetrain drivetrain = GeminiDriveTrain.create();
+    public static CANDrivetrain drivetrain = GeminiDriveTrain.create();
     public static OI oi = new OI();
 
     public Robot() {

@@ -114,11 +114,11 @@ public abstract class CANDrivetrain extends LightningDrivetrain {
         rightFollowers.stream().forEach((m) -> fn.accept("right", m.motor));
     }
 
-    protected WPI_TalonSRX getLeftMaster() {
+    public WPI_TalonSRX getLeftMaster() {
         return leftMaster;
     }
 
-    protected WPI_TalonSRX getRightMaster() {
+    public WPI_TalonSRX getRightMaster() {
         return rightMaster;
     }
 
