@@ -10,7 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.Shoot;
+import frc.robot.commands.FollowLine;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -18,17 +18,16 @@ import frc.robot.commands.Shoot;
  */
 public class OI {
     private Joystick driver = new Joystick(0);
-    private Button shootButton = new JoystickButton(driver, RobotMap.shootButton);
+    private Button followLineButton = new JoystickButton(driver, RobotMap.shootButton);
 
     public double getLeftPower() {
         return -driver.getRawAxis(Constants.leftThrottleAxis);
     }
-
     public double getRightPower() {
         return -driver.getRawAxis(Constants.rightThrottleAxis);
     }
 
     public OI() {
-        shootButton.whenPressed(new Shoot());
+        followLineButton.whenPressed(new FollowLine());
     }
 }

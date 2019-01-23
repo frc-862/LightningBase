@@ -13,8 +13,7 @@ import frc.lightning.subsystems.LightningDrivetrain;
 import frc.lightning.util.FaultMonitor;
 import frc.lightning.util.FaultCode.Codes;
 import frc.robot.subsystems.Core;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.SiriusDrivetrain;
+import frc.robot.subsystems.GeminiDriveTrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,8 +24,7 @@ import frc.robot.subsystems.SiriusDrivetrain;
  */
 public class Robot extends LightningRobot {
     public static Core core = new Core();
-    public static LightningDrivetrain drivetrain = SiriusDrivetrain.create();
-    public static Shooter shooter = new Shooter();
+    public static LightningDrivetrain drivetrain = GeminiDriveTrain.create();
     public static OI oi = new OI();
 
     public Robot() {
