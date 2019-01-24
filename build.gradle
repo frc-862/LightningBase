@@ -31,6 +31,16 @@ deploy {
             targets << "roborio"
             directory = '/home/lvuser/deploy'
         }
+        fileArtifact('logArchiveScript') {
+            targets << "roborio"
+            file = file('rioconfig/logArchive')
+        }
+        commandArtifact('installLogArchiveScript') {
+            targets << "roborio"
+            command = 'sudo cp /home/lvuser/logArchive /etc/init.d/logArchive ; ' +
+                      'sudo chmod +x /etc/init.d/logArchive ; '  +
+                      'sudo ln -s /etc/init.d/logArchive /etc/rc4.d/S20logArchive'
+        }
     }
 }
 

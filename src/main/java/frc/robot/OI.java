@@ -10,7 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.FollowLine;
+import frc.robot.commands.paths.StraightPath;
+import frc.robot.commands.paths.TurnRight;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -29,5 +33,7 @@ public class OI {
 
     public OI() {
         followLineButton.whenPressed(new FollowLine());
+        SmartDashboard.putData("Drive Straight", new StraightPath());
+        SmartDashboard.putData("Turn Right", new TurnRight());
     }
 }

@@ -22,19 +22,6 @@ public class TalonMotionProfile extends Command {
         leftPath = left;
         rightPath = right;
 
-        logger.addDataElement("leftProjected");
-        logger.addDataElement("rightProjected");
-        logger.addDataElement("leftActual");
-        logger.addDataElement("rightActual");
-    }
-
-
-    /**
-     * The initialize method is called just before the first time
-     * this Command is run after being started.
-     */
-    @Override
-    protected void initialize() {
         leftPS.Clear();
         rightPS.Clear();
 
@@ -49,17 +36,30 @@ public class TalonMotionProfile extends Command {
             leftTP.timeDur = 20;
             leftPS.Write(leftTP);
 
-           TrajectoryPoint rightTP = new TrajectoryPoint();
-           double[] rightPt = rightPath[i];
-           rightTP.zeroPos = (i == 0);
-           rightTP.position = LightningMath.feet2talon(rightPt[0]);
-           rightTP.velocity = LightningMath.fps2talon(rightPt[1]);
+            TrajectoryPoint rightTP = new TrajectoryPoint();
+            double[] rightPt = rightPath[i];
+            rightTP.zeroPos = (i == 0);
+            rightTP.position = LightningMath.feet2talon(rightPt[0]);
+            rightTP.velocity = LightningMath.fps2talon(rightPt[1]);
 //           rightTP.headingDeg = rightPt[3];  //units?
-           rightTP.isLastPoint = (i + 1) == rightPath.length;
+            rightTP.isLastPoint = (i + 1) == rightPath.length;
             leftTP.timeDur = 20;
-           rightPS.Write(rightTP);
+            rightPS.Write(rightTP);
         }
 
+        logger.addDataElement("leftProjected");
+        logger.addDataElement("rightProjected");
+        logger.addDataElement("leftActual");
+        logger.addDataElement("rightActual");
+    }
+
+
+    /**
+     * The initialize method is called just before the first time
+     * this Command is run after being started.
+     */
+    @Override
+    protected void initialize() {
         logger.reset();
         Robot.drivetrain.getLeftMaster().startMotionProfile(leftPS, 10, ControlMode.MotionProfile);
         Robot.drivetrain.getRightMaster().startMotionProfile(rightPS, 10, ControlMode.MotionProfile);
