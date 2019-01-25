@@ -28,7 +28,7 @@ public class GeminiDriveTrain extends CANDrivetrain {
                    new WPI_TalonSRX(1),
                    new WPI_VictorSPX(2),
                    new WPI_TalonSRX(4),
-                   new WPI_VictorSPX(6));
+                   new WPI_VictorSPX(5));
     }
 
     public GeminiDriveTrain(WPI_TalonSRX left, WPI_VictorSPX left2,
@@ -42,7 +42,7 @@ public class GeminiDriveTrain extends CANDrivetrain {
     }
 
     public void configureMotors() {
-        getLeftMaster().setInverted(true);
+        getRightMaster().setInverted(true);
         super.configureMotors();
 
         withEachMaster((m) -> {

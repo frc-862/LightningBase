@@ -9,14 +9,17 @@ package frc.robot.subsystems;
 
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lightning.logging.DataLogger;
 import frc.lightning.util.FaultMonitor;
 import frc.lightning.util.UnchangingFaultMonitor;
 import frc.lightning.util.FaultCode.Codes;
 import frc.robot.RobotMap;
+import frc.robot.commands.PneumaticTest;
 
 /**
  * This is a subsystem that has robot sensor that
@@ -29,6 +32,8 @@ public class Core extends Subsystem {
     private AHRS navx;
     private Compressor compressor = new Compressor(RobotMap.compressorCANId);
     private PowerDistributionPanel pdp = new PowerDistributionPanel(RobotMap.pdpCANId);
+
+    private DigitalInput pressure1 = new DigitalInput(0);
 
     public Core() {
         navx = new AHRS(SPI.Port.kMXP);
@@ -64,6 +69,15 @@ public class Core extends Subsystem {
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
+    }
+
+    public boolean hatchPressed() {
+        return pressure1.get();
+    }
+
+    @Override
+    public void periodic() {
+        SmartDashboard.putBoolean("Hatch Sensor", hatchPressed());
+        SmartDashboard.putData(pressure1);
     }
 }

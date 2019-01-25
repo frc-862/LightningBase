@@ -7,10 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.FollowLine;
 import frc.robot.commands.paths.StraightPath;
@@ -35,5 +35,7 @@ public class OI {
         followLineButton.whenPressed(new FollowLine());
         SmartDashboard.putData("Drive Straight", new StraightPath());
         SmartDashboard.putData("Turn Right", new TurnRight());
+
+        int jt = DriverStation.getInstance().getJoystickType(0);
     }
 }

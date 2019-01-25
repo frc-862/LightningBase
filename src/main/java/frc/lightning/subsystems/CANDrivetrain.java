@@ -13,9 +13,9 @@ import java.util.function.Consumer;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lightning.logging.DataLogger;
 
 /**
@@ -44,12 +44,28 @@ public abstract class CANDrivetrain extends LightningDrivetrain {
     protected CANDrivetrain(WPI_TalonSRX left, WPI_TalonSRX right) {
         leftMaster = left;
         rightMaster = right;
+
+        leftMaster.setSubsystem(getClass().getSimpleName());
+        rightMaster.setSubsystem(getClass().getSimpleName());
+
+        SmartDashboard.putData(leftMaster);
+        SmartDashboard.putData(rightMaster);
+    }
+
+    private void addFollower(BaseMotorController m, WPI_TalonSRX master, boolean inverted) {
+        m.setInverted(inverted);
+        m.follow(master);
+
+        if (m instanceof Sendable) {
+            Sendable s = (Sendable) m;
+            s.setSubsystem(getClass().getSimpleName());
+            SmartDashboard.putData(s);
+        }
     }
 
     protected void addRightFollower(BaseMotorController m, boolean inverted) {
-        m.setInverted(inverted);
-        m.follow(rightMaster);
         rightFollowers.add(new FollowMotor(m, inverted));
+        addFollower(m, rightMaster, inverted);
     }
 
     protected void addRightFollower(BaseMotorController m) {
@@ -57,9 +73,8 @@ public abstract class CANDrivetrain extends LightningDrivetrain {
     }
 
     protected void addLeftFollower(BaseMotorController m, boolean inverted) {
-        m.setInverted(inverted);
-        m.follow(leftMaster);
         leftFollowers.add(new FollowMotor(m, inverted));
+        addFollower(m, leftMaster, inverted);
     }
 
     protected void addLeftFollower(BaseMotorController m) {
