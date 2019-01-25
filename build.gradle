@@ -1,7 +1,10 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2019.1.1"
+    id "edu.wpi.first.GradleRIO" version "2019.2.1"
 }
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 def ROBOT_MAIN_CLASS = "frc.robot.Main"
 
@@ -30,16 +33,6 @@ deploy {
             // Deploy to RoboRIO target, into /home/lvuser/deploy
             targets << "roborio"
             directory = '/home/lvuser/deploy'
-        }
-        fileArtifact('logArchiveScript') {
-            targets << "roborio"
-            file = file('rioconfig/logArchive')
-        }
-        commandArtifact('installLogArchiveScript') {
-            targets << "roborio"
-            command = 'sudo cp /home/lvuser/logArchive /etc/init.d/logArchive ; ' +
-                      'sudo chmod +x /etc/init.d/logArchive ; '  +
-                      'sudo ln -s /etc/init.d/logArchive /etc/rc4.d/S20logArchive'
         }
     }
 }
