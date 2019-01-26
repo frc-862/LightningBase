@@ -14,7 +14,9 @@ import frc.lightning.util.FaultMonitor;
 import frc.lightning.util.FaultCode.Codes;
 import frc.robot.subsystems.Core;
 import frc.robot.subsystems.GeminiDriveTrain;
+import frc.robot.subsystems.SiriusDrivetrain;
 import frc.robot.subsystems.Pneumatics;
+import frc.lightning.subsystems.VisionSystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,7 +27,9 @@ import frc.robot.subsystems.Pneumatics;
  */
 public class Robot extends LightningRobot {
     public static Core core = new Core();
-    public static CANDrivetrain drivetrain = GeminiDriveTrain.create();
+    //public static CANDrivetrain drivetrain = GeminiDrivetrain.create();
+    public static SiriusDrivetrain drivetrain = SiriusDrivetrain.create();
+    public static VisionSystem vision = new VisionSystem();
     public static OI oi = new OI();
     public static Pneumatics pneumatics = new Pneumatics();
 

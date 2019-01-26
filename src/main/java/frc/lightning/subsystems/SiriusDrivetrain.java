@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.lightning.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -32,23 +32,23 @@ public class SiriusDrivetrain extends SpeedControllerDrivetrain {
 
         right.setInverted(true);
 
-      // Encoder leftEncoder = new Encoder(RobotMap.leftEncoder1, RobotMap.leftEncoder2);
-      //  Encoder rightEncoder = new Encoder(RobotMap.rightEncoder1, RobotMap.rightEncoder2);
+        Encoder leftEncoder = new Encoder(RobotMap.leftEncoder1, RobotMap.leftEncoder2);
+        Encoder rightEncoder = new Encoder(RobotMap.rightEncoder1, RobotMap.rightEncoder2);
 
-        return new SiriusDrivetrain(left, right);
+        return new SiriusDrivetrain(left, leftEncoder, right, rightEncoder);
     }
 
-    public SiriusDrivetrain(SpeedController left, SpeedController right) {
-        super(left, right);
+    public SiriusDrivetrain(SpeedController left, Encoder leftEnc, SpeedController right, Encoder rightEnc) {
+        super(left, leftEnc, right, rightEnc);
 
         DataLogger.addDataElement("leftPower", () -> left.get());
         DataLogger.addDataElement("rightPower", () -> right.get());
 
-     //   DataLogger.addDataElement("leftPosition", () -> leftEncoder.getDistance());
-     //   DataLogger.addDataElement("rightPosition", () -> rightEncoder.getDistance());
+        DataLogger.addDataElement("leftPosition", () -> leftEncoder.getDistance());
+        DataLogger.addDataElement("rightPosition", () -> rightEncoder.getDistance());
 
-     //   DataLogger.addDataElement("leftVelocity", () -> leftEncoder.getRate());
-     //   DataLogger.addDataElement("rightVelocity", () -> rightEncoder.getRate());
+        DataLogger.addDataElement("leftVelocity", () -> leftEncoder.getRate());
+        DataLogger.addDataElement("rightVelocity", () -> rightEncoder.getRate());
     }
 
     @Override
