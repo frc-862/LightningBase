@@ -13,16 +13,15 @@ import frc.lightning.util.NoTargetException;
 import frc.lightning.util.Target;
 import frc.robot.Robot;
 
-public class VisionTurn extends Command {
+public class VisionRotateAndApproach extends Command {
 
-//Variables and constants that will be moved to another class later
 
-private final double SQUINT_BOUND = 3;
+  private final double SQUINT_BOUND = 3;
 
-//End of things that will be moved later
 
-  public VisionTurn() {
+  public VisionRotateAndApproach() {
     // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
     requires(Robot.vision);
     requires(Robot.drivetrain);
   }
@@ -30,45 +29,42 @@ private final double SQUINT_BOUND = 3;
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     try {
-        double squint = Robot.vision.getBestTarget().squint();
+      Target target = Robot.vision.getBestTarget();
+      double squint = target.squint();
 
-        if (Math.abs(squint) > SQUINT_BOUND) {
+      if (Math.abs(squint) > SQUINT_BOUND) {
 
-            
-            Robot.drivetrain.setPower(0.4 * Math.signum(squint), 0.4 * -Math.signum(squint));
-            //Robot.drivetrain.setPower(0.4,0.4);
-            SmartDashboard.putString("vision turn status", "turning");
-            
-            
+          
+          Robot.drivetrain.setPower(0.25 * Math.signum(squint), 0.25 * -Math.signum(squint));
+          //Robot.drivetrain.setPower(0.4,0.4);
+          SmartDashboard.putString("vision turn status", "turning");
+          
+          
 
-        }
-        else {
+      }
+      else {
 
-            
-            Robot.drivetrain.setPower(0, 0);
-            SmartDashboard.putString("vision turn status", "not turning");
-            
-        }
+          double power = 0.035 * target.standoff() + 0.075;
+          Robot.drivetrain.setPower(power, power);
+          SmartDashboard.putString("vision turn status", "not turning");
+          
+      }
 
-    } catch(NoTargetException e) {
+  } catch(NoTargetException e) {
 
-        
-        Robot.drivetrain.setPower(0, 0);
-        SmartDashboard.putString("vision turn status", "not turning");
-        
+      
+      Robot.drivetrain.setPower(0, 0);
+      SmartDashboard.putString("vision turn status", "not turning");
+      
 
-    }
-
-    }
-
-  
+  }
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -85,6 +81,5 @@ private final double SQUINT_BOUND = 3;
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

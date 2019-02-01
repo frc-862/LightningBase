@@ -83,7 +83,7 @@ public class VisionSystem extends Subsystem {
 */
   public Target getBestTarget() throws NoTargetException {
     if(cameraData.size() == 0) throw new NoTargetException();
-    Target best = new Target(0, 0, 999);
+    Target best = new Target(0, 0, 999); //Creating a first target and making squint 999
     for(Target t : cameraData) {
       if(Math.abs(t.squint()) < Math.abs(best.squint())) best = t;
     }
@@ -91,7 +91,8 @@ public class VisionSystem extends Subsystem {
   }
 
   /**
-   * Pings the camera and returns the latency in the camera's response (half of the time from sending the ping to recieving the response).
+   * Pings the camera and returns the latency in the camera's response 
+   * (half of the time from sending the ping to recieving the response).
    */
   public double testLatency() {
     if(connected == 0) return 0;
@@ -128,12 +129,17 @@ public class VisionSystem extends Subsystem {
         cameraData = new ArrayList<Target>();
         String currentTarget;
         for(int i = 0; i < numTargets; i++) {
+          SmartDashboard.putString("vision step", "grab target data");
           currentTarget = lastFrame.substring(lastFrame.indexOf("Target:" + i + "["));
+          SmartDashboard.putString("vision step", "begin parse");
           double standoff, rotation, squint;
-          standoff = Integer.parseInt(currentTarget.substring(currentTarget.indexOf("standoff:") + 9, currentTarget.indexOf(",", currentTarget.indexOf("standoff:"))));
-          rotation = Integer.parseInt(currentTarget.substring(currentTarget.indexOf("rotation:") + 9, currentTarget.indexOf(",", currentTarget.indexOf("rotation:"))));
-          squint = Integer.parseInt(currentTarget.substring(currentTarget.indexOf("squint:") + 7, currentTarget.indexOf(",", currentTarget.indexOf("squint:"))));
-          SmartDashboard.putString("vision step", "target");
+          standoff = Double.parseDouble(currentTarget.substring(currentTarget.indexOf("standoff:") + 9, currentTarget.indexOf(",", currentTarget.indexOf("standoff:"))));
+          SmartDashboard.putString("vision step", "parsed standoff");
+          rotation = Double.parseDouble(currentTarget.substring(currentTarget.indexOf("rotation:") + 9, currentTarget.indexOf(",", currentTarget.indexOf("rotation:"))));
+          SmartDashboard.putString("vision step", "parsed rotation");
+          squint = Double.parseDouble(currentTarget.substring(currentTarget.indexOf("squint:") + 7, currentTarget.indexOf("]", currentTarget.indexOf("squint:"))));
+          SmartDashboard.putString("vision step", "parsed squint");
+          SmartDashboard.putString("vision step", "end parse");
           cameraData.add(new Target(standoff, rotation, squint));
         }
         lastCameraUpdate = currentTime;
