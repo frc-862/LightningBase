@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lightning.commands.VisionRotateAndApproach;
 import frc.lightning.commands.VisionTurn;
+import frc.lightning.commands.WaypointThenTarget;
 import frc.robot.commands.FollowLine;
 //import frc.robot.commands.paths.StraightPath;
 //import frc.robot.commands.paths.TurnRight;
@@ -36,7 +37,7 @@ public class OI {
 
     public OI() {
         followLineButton.whenPressed(new FollowLine());
-        rotateApproachButton.whileHeld(new VisionRotateAndApproach());
+        rotateApproachButton.whileHeld(new WaypointThenTarget());
         //SmartDashboard.putData("Drive Straight", new StraightPath());
         //SmartDashboard.putData("Turn Right", new TurnRight());
         SmartDashboard.putData("VisionTurn", new VisionTurn());

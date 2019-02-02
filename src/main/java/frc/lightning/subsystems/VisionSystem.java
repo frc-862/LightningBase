@@ -83,11 +83,15 @@ public class VisionSystem extends Subsystem {
 */
   public Target getBestTarget() throws NoTargetException {
     if(cameraData.size() == 0) throw new NoTargetException();
-    Target best = new Target(0, 0, 999); //Creating a first target and making squint 999
+    Target best = new Target(0, 0, 999, 0); //Creating a first target and making squint 999
     for(Target t : cameraData) {
       if(Math.abs(t.squint()) < Math.abs(best.squint())) best = t;
     }
     return best;
+  }
+
+  public double getLatency() {
+    return latency;
   }
 
   /**
@@ -96,13 +100,20 @@ public class VisionSystem extends Subsystem {
    */
   public double testLatency() {
     if(connected == 0) return 0;
-    serialIn.writeString("ping");
-    long sendTime = System.currentTimeMillis();
-    String response = "";
-    do {
-      response = serialIn.readString();
-    } while(response.indexOf("ALIVE") == -1);
-    return (System.currentTimeMillis() - sendTime) / 2;
+    boolean successfulTest = false;
+    long sendTime = 0, readTime = 0;
+    while(!successfulTest) {
+      serialIn.writeString("ping");
+      sendTime = System.currentTimeMillis();
+      String response = "";
+      do {
+        response = serialIn.readString();
+        readTime = System.currentTimeMillis();
+        if(response.indexOf("ALIVE") != -1) successfulTest = true;
+      } while(!successfulTest && readTime - sendTime <= 50);
+    }
+    return (readTime - sendTime) / 2.0;
+    
   }
 
   private void collectData() {
@@ -140,7 +151,7 @@ public class VisionSystem extends Subsystem {
           squint = Double.parseDouble(currentTarget.substring(currentTarget.indexOf("squint:") + 7, currentTarget.indexOf("]", currentTarget.indexOf("squint:"))));
           SmartDashboard.putString("vision step", "parsed squint");
           SmartDashboard.putString("vision step", "end parse");
-          cameraData.add(new Target(standoff, rotation, squint));
+          cameraData.add(new Target(standoff, rotation, squint, Math.round(currentTime - latency)));
         }
         lastCameraUpdate = currentTime;
         lastFrameTime = Math.round(currentTime - latency);
